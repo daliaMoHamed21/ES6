@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounes</title>
+</head>
+
+<body>
+    <div>
+        <h2>
+            Nullish coalescing a way to handle default values for null or undefined values
+        </h2>
+    </div>
+    <script>
+        //Nullish coalescing operator
+        //case 1
+        var defaultValue = null ?? 'No value found ';
+        console.log(defaultValue); // Output: 'No value found!'
+        //case 2
+        var definedValue = 'Hello' ?? 'No value found ';
+        console.log(definedValue); // Output: 'Hello'
+
+    </script>
+</body>
+
+</html>

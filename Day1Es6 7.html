@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbols</title>
+</head>
+
+<body>
+    <div>
+        <h1>Symbols</h1>
+        <p>Symbols are unique and immutable primitive data types in ES6.
+            They are often used as unique keys for object properties</p>
+    </div>
+    <script>
+        // Symbol for private data
+        const bookData = Symbol('bookData');
+
+        class Book {
+            constructor(title, author) {
+                this.title = title;
+                this.author = author;
+                // Creating a private data object for the book
+                this[bookData] = {
+                    ISBN: '',
+                    genre: '',
+                    
+                };
+            }
+
+            // Method to set ISBN
+            setISBN(isbn) {
+                this[bookData].ISBN = isbn;
+            }
+
+            // Method to get ISBN
+            getISBN() {
+                return this[bookData].ISBN;
+            }
+            // Method to set genre
+            setgenre(Genre){
+                this[bookData].genre = Genre;
+            }
+            // Method to get genre
+            getgenre() {
+                return this[bookData].genre;
+            }
+        }
+
+        // Creating a book instance 'setdata'
+        const myBook = new Book('Journey to the Center of the Earth', 'Jules Verne');
+        myBook.setISBN('9781234567897');
+        myBook.setgenre('adventure')
+
+        //Outputs
+        console.log(myBook.getISBN());    // Output: 9781234567897
+        console.log(myBook.getgenre());  // Output: adventure
+        console.log(myBook[bookData]);  // Output: { ISBN: '9781234567897', genre: 'adventure' }
+        console.log(myBook.title);     // Output: The Great Gatsby
+
+
+    </script>
+</body>
+
+</html>

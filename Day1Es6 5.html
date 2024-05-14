@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obj &spreed opreator & for..of</title>
+</head>
+<body>
+    <div><h1> Obj &spreed opreator & for..of</h1></div>
+    <script>
+        const students = new Set();
+        students.add('Dalia');
+        students.add('Mohamed');
+        students.add('Alsayed');
+        students.add('Mohamed');
+        //Print using set
+        console.log(students);
+        
+        //Print using spreed opreator
+        const setValuesSpread = [...students];
+        console.log(setValuesSpread); 
+
+        //print using for..of
+
+         for (const student of students) {
+            console.log(student);
+            
+        }
+    </script>
+    
+</body>
+</html>

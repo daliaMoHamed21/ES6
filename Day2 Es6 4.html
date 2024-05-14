@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web page  using Promises</title>
+</head>
+<body>
+    <div id="messages"></div>
+    
+
+    <script>
+        // Display a message in the body
+        const displayMessage = (message) => {
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<h3>${message}</h3>`;
+        };
+
+        // Simulate a delay using a Promise
+        const delay = (duration) => {
+            return new Promise((resolve) => {
+                setTimeout(resolve, duration);
+            });
+        };
+
+        // Display messages and handle redirects using Promises
+        const pageMessages = () => {
+            displayMessage('Welcome!');
+            delay(3000)
+                .then(() => {
+                    displayMessage(`<img src="./Resources/pink.jfif" alt="User Image">`);
+                    return delay(3000);
+                })
+                .then(() => {
+                    displayMessage('Thanks for visiting!');
+                    return delay(3000);
+                })
+                .then(() => {
+                    displayMessage('Redirecting to another page...');
+                    return delay(2000);
+                })
+                .then(() => {
+                    window.location.href = 'Welcome.html';
+                });
+        };
+
+        // Call the function to start displaying messages
+        pageMessages();
+    </script>
+</body>
+</html>

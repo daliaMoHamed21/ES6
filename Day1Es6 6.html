@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips Generator</title>
+</head>
+
+<body>
+    <div>
+        <h1>Tips Generator</h1>
+        <button onclick="displayAllTips()">Display All Tips</button>
+        <button onclick="displayTipEvery3Seconds()">Display Tip Every 3 Seconds</button>
+        <div id="tipDisplay"></div>
+    </div>
+
+    <script>
+        //generator function to get tips 
+        function* tipGenerator() {
+            const tips = [
+                "Tip 1: Listen to calming music to unwind and relax.",
+                "Tip 2: Exercise regularly to boost energy levels.",
+                "Tip 3: Set achievable goals to stay motivated.",
+
+            ];
+
+            for (let i = 0; i < tips.length; i++) {
+                yield tips[i];
+            }
+        }
+
+        const tipsIterator = tipGenerator();
+        function displayAllTips() {
+            const tipDisplay = document.getElementById('tipDisplay');
+            tipDisplay.innerHTML = '';
+
+            for (const tip of tipsIterator) {
+                tipDisplay.innerHTML += `<h2>${tip}</h2>`;
+            }
+        }
+        //function to get tips every 3 second
+        function displayTipEvery3Seconds() {
+            const tipEvery3Seconds = document.getElementById('tipDisplay')
+            tipDisplay.innerHTML = '';
+
+            const interval = setInterval(() => {
+                const nextTip = tipsIterator.next();
+                if (nextTip.done) {
+                    clearInterval(interval);
+                    return;
+                }
+                tipDisplay.innerHTML += `<h2>${nextTip.value}</h2>`;
+            }, 3000);
+
+        }
+
+
+    </script>
+</body>
+
+</html>

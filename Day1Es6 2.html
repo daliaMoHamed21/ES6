@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow function</title>
+</head>
+
+<body>
+    <div>
+        <h1>Arrow function</h1>
+    </div>
+    <script>
+        //odd number Array.filter() 
+        var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var oddNumbers = numbers.filter(numbers => numbers % 2 !== 0)
+        console.log(oddNumbers);
+
+        // even values Array.forech() 
+        numbers.forEach(number => {
+            if (number % 2 === 0) {
+                console.log(number);
+            }
+        });
+        // sqr "Array map"
+        var squarNumbers = numbers.map(number => number * number);
+        console.log(squarNumbers);
+        // own context 
+        // Regular function
+        function regularFunction() {
+            // 'this' refers to the global/window object 
+           console.log(this); 
+        }
+
+        // Arrow function
+        const arrowFunction = () => {
+            // 'this' refers to the enclosing scope's 'this'
+            console.log(this); 
+        };
+
+        const obj = {
+            regularMethod: regularFunction,
+            arrowMethod: arrowFunction
+        };
+        // 'this' inside regularMethod refers to 'obj'
+        obj.regularMethod();
+        // 'this' inside arrowMethod refers to the surrounding scope (could be global/window) 
+        obj.arrowMethod(); 
+
+
+
+
+    </script>
+</body>
+
+</html>
